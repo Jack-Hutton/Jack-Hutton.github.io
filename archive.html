@@ -18,44 +18,61 @@
             text-align: center;
             border-bottom: 2px solid #38bdf8;
             padding-bottom: 10px;
+            margin-bottom: 30px;
         }
-        ul { list-style: none; padding: 0; }
-        li { 
+        /* 文章卡片样式 */
+        .article-card { 
             background-color: #1e293b; 
-            margin-bottom: 15px; 
-            padding: 15px; 
+            margin-bottom: 20px; 
+            padding: 20px; 
             border-radius: 8px; 
             border-left: 5px solid #ff007c;
             transition: 0.3s;
+            text-align: left;
         }
-        li:hover { transform: translateX(10px); background-color: #2a3a52; }
-        a { color: #00ff00; text-decoration: none; font-size: 20px; font-weight: bold; }
-        .date { color: #94a3b8; font-size: 14px; float: right; }
+        .article-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 0 15px rgba(255, 0, 124, 0.3);
+        }
+        .article-title {
+            color: #00ff00;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .article-content {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 16px;
+        }
         .btn { 
-            display: block; width: 200px; text-align: center; padding: 12px 24px; 
-            background-color: #ff007c; color: white; border-radius: 8px; 
-            font-weight: bold; margin: 40px auto 0; text-decoration: none;
+            display: block; 
+            width: 200px; 
+            text-align: center; 
+            padding: 12px 24px; 
+            background-color: #ff007c; 
+            color: white; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            margin: 40px auto 0; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
         }
     </style>
 </head>
 <body>
-    <h1>📚 李甫西大夫的归档</h1>
-    <p>这里收录了我的一些文章、代码或者好玩的东西：</p>
+    <h1>📚 个人归档</h1>
 
-    <ul>
-        <li>
-            <a href="about.html">关于我的那些事</a>
-            <span class="date">2026-10</span>
-        </li>
-        <li>
-            <a href="https://www.bilibili.com/video/BV1GJ411x7h7/" target="_blank">B站的惊喜传送门</a>
-            <span class="date">2026-10</span>
-        </li>
-        <li>
-            <a href="guestbook.html">给我留个言</a>
-            <span class="date">刚刚</span>
-        </li>
-    </ul>
+    <div class="article-card">
+        <div class="article-title">一、我的个人博客</div>
+        <div class="article-content">
+            这是我历经千辛万苦彻夜难眠绞尽脑汁设计的博客！
+        </div>
+    </div>
 
     <a href="index.html" class="btn">⬅ 返回主页</a>
 </body>

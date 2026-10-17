@@ -1,48 +1,49 @@
----
-layout: page
-title: "About"
-description: "「他单纯只想把日子过得不浪费」"
-header-img: "img/bg-me-2022.jpg"
-header-mask: 0.3
-multilingual: true
----
-
-{% include multilingual-sel.html %}
-
-<!-- Chinese Version -->
-<div class="zh post-container">
-    {% capture about_zh %}{% include about/zh.md %}{% endcapture %}
-    {{ about_zh | markdownify }}
-</div>
-
-<!-- English Version -->
-<div class="en post-container">
-    {% capture about_en %}{% include about/en.md %}{% endcapture %}
-    {{ about_en | markdownify }}
-</div>
-
-
-{% if site.disqus_username %}
-<!-- disqus 评论框 start -->
-<div class="comment">
-    <div id="disqus_thread" class="disqus-thread">
-
-    </div>
-</div>
-<!-- disqus 评论框 end -->
-
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
-    (function () {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
-{% endif %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>关于我 - 李甫西大夫</title>
+    <style>
+        body {
+            background-color: #0f172a; /* 这里可以用深色背景 */
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+            padding: 50px;
+        }
+        h1 {
+            color: #38bdf8;
+            text-shadow: 0 0 20px #38bdf8;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff007c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 0 15px #ff007c;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>关于李甫西大夫</h1>
+    <p>这里是关于你的介绍。你可以写你的爱好、你在做什么、或者为什么想建这个网站。比如：</p>
+    <p>“我是一个喜欢编程的开发者，偶尔喝点朗姆酒。这个网站是我用 GitHub Pages 搭建的！”</p>
+    
+    <!-- 返回主页的链接 -->
+    <a href="index.html" class="back-btn">⬅ 返回主页</a>
+</body>
+</html>

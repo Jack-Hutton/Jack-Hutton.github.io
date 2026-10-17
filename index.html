@@ -3,54 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>李甫西大夫的个人主页</title>
-        /* === 霓虹灯导航按钮样式 === */
-    .nav-buttons {
-        margin: 30px 0 50px 0;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-    .cyber-btn {
-        padding: 12px 30px;
-        font-size: 18px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #38bdf8;
-        border: 2px solid #38bdf8;
-        border-radius: 8px;
-        background-color: rgba(15, 23, 42, 0.6);
-        box-shadow: 0 0 10px #38bdf8, inset 0 0 10px #38bdf8;
-        text-shadow: 0 0 5px #38bdf8;
-        transition: all 0.3s ease;
-    }
-    .cyber-btn:hover {
-        color: #ff007c;
-        border-color: #ff007c;
-        box-shadow: 0 0 20px #ff007c, inset 0 0 20px #ff007c;
-        text-shadow: 0 0 10px #ff007c;
-        transform: scale(1.1);
-    }
     <style>
         body {
-            /* 删除了 background-color，让底层的代码雨透出来 */
             margin: 0;
             padding: 20px;
             text-align: center;
             font-family: sans-serif;
             overflow-x: hidden;
-            /* 保证内容在代码雨上方 */
             position: relative;
-            z-index: 1; 
+            z-index: 1;
         }
-        h1 {
-            color: #38bdf8;
-            text-shadow: 0 0 20px #38bdf8;
-        }
-        h2 {
-            color: #ff007c;
-            text-shadow: 0 0 20px #ff007c;
-        }
+        h1 { color: #38bdf8; text-shadow: 0 0 20px #38bdf8; }
+        h2 { color: #ff007c; text-shadow: 0 0 20px #ff007c; }
         img {
             border-radius: 50%;
             border: 4px solid white;
@@ -58,16 +22,42 @@
             height: 300px;
             object-fit: cover;
             box-shadow: 0 0 30px #38bdf8;
-            cursor: pointer; /* 鼠标放上去变小手，提示可以点 */
+            cursor: pointer;
+            margin-top: 20px;
         }
-        a {
+        a { text-decoration: none; }
+        .nav-buttons {
+            margin: 30px 0 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .cyber-btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
             text-decoration: none;
+            color: #38bdf8;
+            border: 2px solid #38bdf8;
+            border-radius: 8px;
+            background-color: rgba(15, 23, 42, 0.6);
+            box-shadow: 0 0 10px #38bdf8, inset 0 0 10px #38bdf8;
+            text-shadow: 0 0 5px #38bdf8;
+            transition: all 0.3s ease;
+        }
+        .cyber-btn:hover {
+            color: #ff007c;
+            border-color: #ff007c;
+            box-shadow: 0 0 20px #ff007c, inset 0 0 20px #ff007c;
+            text-shadow: 0 0 10px #ff007c;
+            transform: scale(1.1);
         }
         @keyframes leftPightMove {
             0% { transform: translateX(20px); }
             100% { transform: translateX(-20px); }
         }
-        a h1 {
+        .bilibili-link h1 {
             animation: leftPightMove 1.5s ease-in-out infinite alternate;
             color: #00ff00;
             text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
@@ -86,7 +76,7 @@
             transform: scale(0.1);
             opacity: 0;
             transition: all 0.5s;
-            z-index: 9999; /* 确保弹窗在最顶层 */
+            z-index: 9999;
         }
         #matrixCanvas {
             position: fixed;
@@ -127,35 +117,27 @@
     <h2>100万粉丝啦!!！😜</h2>
     <div id="typewriter"></div>
     
-    <!-- ⚠️ 注意：把你图床拿到的直链，替换掉下面 src 里的网址 -->
     <img src="https://s41.ax1x.com/2026/10/17/pnwwEEd.png" onclick="hackerAttack()" alt="头像">
     
-        <!-- 赛博朋克导航按钮 -->
     <div class="nav-buttons">
         <a href="guestbook.html" class="cyber-btn">📝 访客留言</a>
         <a href="archive.html" class="cyber-btn">📚 个人归档</a>
     </div>
-    
-    <a href="https://www.bilibili.com/video/BV1GJ411x7h7/">
+
+    <a href="https://www.bilibili.com/video/BV1GJ411x7h7/" class="bilibili-link">
        <h1>💥点击传送：有惊喜💥</h1>
     </a>
 
-    
-    <br><br> <!-- 加两个换行，让按钮离上面的文字远一点 -->
-<a href="about.html" style="color: #ff007c; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px #ff007c; text-decoration: none;">👉 点这里去关于页 👈</a>
-
     <script>
         function hackerAttack() {
-            var n = 100;
+            var n = 50;
             for (var i = 1; i <= n; i++) {
                 setTimeout(() => {
                     let box = document.createElement("div");
                     box.innerText = "我是李甫西大夫，我要喝朗姆😈😈😈";
                     document.body.appendChild(box);
                     box.className = "fake-alert";
-
                     box.offsetHeight;
-
                     box.style.left = (Math.random() * 100) + "%";
                     box.style.top = (Math.random() * 100) + "%";
                     box.style.opacity = "1";
@@ -167,90 +149,52 @@
         (function matrixRain() {
             const canvas = document.getElementById('matrixCanvas');
             const ctx = canvas.getContext('2d');
-
-            let width, height;
-            let columns;
-            let fontSize = 16;
-            let drops = [];
-
+            let width, height, columns, drops = [];
+            const fontSize = 16;
             const chars = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789@#$%&*';
-
+            
             function resize() {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
                 columns = Math.floor(width / fontSize);
                 drops = Array(columns).fill(1);
             }
-
             window.addEventListener('resize', resize);
             resize();
-
+            
             function draw() {
                 ctx.fillStyle = 'rgba(15, 23, 42, 0.15)';
                 ctx.fillRect(0, 0, width, height);
-
                 ctx.font = fontSize + 'px monospace';
-
                 for (let i = 0; i < drops.length; i++) {
                     const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                    const x = i * fontSize;
-                    const y = drops[i] * fontSize;
-
-                    if (Math.random() > 0.975) {
-                        ctx.fillStyle = '#fff';
-                    } else {
-                        ctx.fillStyle = '#0f0';
-                    }
-
-                    ctx.fillText(text, x, y);
-
-                    if (y > height && Math.random() > 0.98) {
-                        drops[i] = 0;
-                    }
+                    ctx.fillStyle = Math.random() > 0.975 ? '#fff' : '#0f0';
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > height && Math.random() > 0.98) drops[i] = 0;
                     drops[i]++;
                 }
-                // 使用 requestAnimationFrame 替代 setInterval，防止 GitHub Pages 拦截
                 requestAnimationFrame(draw);
             }
-            
-            // 启动动画
             draw();
         })();
 
         (function typewriter() {
             const sentences = ['ура😡😡😡', '重返金银岛😍', '关注景行喵🙀'];
             const el = document.getElementById('typewriter');
-            let sentenceIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-
+            let sIdx = 0, cIdx = 0, isDel = false;
+            
             function type() {
-                const chars = Array.from(sentences[sentenceIndex]);
-
-                if (isDeleting) {
-                    charIndex--;
-                    el.textContent = chars.slice(0, charIndex).join('');
-
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        sentenceIndex = (sentenceIndex + 1) % sentences.length;
-                        setTimeout(type, 300);
-                        return;
-                    }
+                const chars = Array.from(sentences[sIdx]);
+                if (isDel) {
+                    cIdx--; el.textContent = chars.slice(0, cIdx).join('');
+                    if (cIdx === 0) { isDel = false; sIdx = (sIdx + 1) % sentences.length; setTimeout(type, 300); return; }
                     setTimeout(type, 60);
                 } else {
-                    charIndex++;
-                    el.textContent = chars.slice(0, charIndex).join('');
-
-                    if (charIndex === chars.length) {
-                        isDeleting = true;
-                        setTimeout(type, 1000);
-                        return;
-                    }
+                    cIdx++; el.textContent = chars.slice(0, cIdx).join('');
+                    if (cIdx === chars.length) { isDel = true; setTimeout(type, 1000); return; }
                     setTimeout(type, 150);
                 }
             }
-
             type();
         })();
     </script>

@@ -1,46 +1,85 @@
----
-layout: page
-description: "「离开世界之前 一切都是过程」"
----
+<style>
+    body{
+        background-color:#0f172a;
+        text-align:center;
+        font-family:sans-serif;
+    }
+    h1{
+        color:#38bdf8;
+        text-shadow: 0 0 20px #38bdf8;
+    }
+    h2{
+        color:#ff007c;
+        text-shadow: 0 0 20px #ff007c;
+    }
+    img{
+        border-radius: 50%;
+        border:4px solid white;
+        width:300px;
+        height:300px;
+        object-fit:cover;
+        box-shadow: 0 0 30px #38bdf8;
+    }
+    a{
+        text-decoration:none;
+    }
+    @keyframes leftPightMove{
+        0%{transform: translateX(20px);}
+        100%{transform: translateX(-20px);}
+    }
+    a h1{
+        animation: leftPightMove 1.5s ease-in-out infinite alternate;
+        color:#00ff00;
+        text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+    }
+    .fake-alert{
+        background-color:green;
+        color:white;
+        position:fixed;
+        left:50%; 
+        top:50%;
+        border:2px solid white;
+        box-shadow: 0 0 25px #f7f8f7;
+        padding:10px 20px;
+        font-weight:bold;
+        border-radius:5px;
+        transform: scale(0.1);
+        opacity:0;
+        transition: all 0.5s;
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncate:300 }}
-            {% else %}
-                {{ post.content | strip_html | truncate:200 }}
-            {% endif %}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
+    }
+</style>
+<h1>李甫西大夫的个人主页</h1>
+<h2>100万粉丝啦!!！😜</h2>
+<img src="https://s41.ax1x.com/2026/10/17/pnwwEEd.png" onclick="hackerAttack()">
+<a href="https://www.bilibili.com/video/BV1GJ411x7h7/" >
+   <h1>
+        💥点击传送：有惊喜💥
+    </h1>
+</a>
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+<script>
+    function hackerAttack(){
+        var n = 100;
+        for(var i=1;i<=n;i++){
+           //alert("你个二狗子，拿酒来！我是李甫西大夫，我要喝朗姆！关不掉吧？这是李甫西"+i+"号的警告！");
+            
+            setTimeout(() => {
+                let box = document.createElement("div");
+                box.innerText = "我是李甫西大夫，我要喝朗姆😈😈😈";
+                document.body.appendChild(box);
+                box.className="fake-alert";
+
+                box.offsetHeight;
+
+                box.style.left = (Math.random() * 100) + "%";
+                box.style.top = (Math.random() * 100) + "%";
+                box.style.opacity = "1";
+                box.style.transform = `scale(${Math.random() + 0.5}) rotate(${Math.random() * 60 - 30}deg)`;
+            },i*20);
+           
+            
+        }
+    }
+    
+</script>

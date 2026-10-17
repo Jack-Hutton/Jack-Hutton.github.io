@@ -1,85 +1,220 @@
-<style>
-    body{
-        background-color:#0f172a;
-        text-align:center;
-        font-family:sans-serif;
-    }
-    h1{
-        color:#38bdf8;
-        text-shadow: 0 0 20px #38bdf8;
-    }
-    h2{
-        color:#ff007c;
-        text-shadow: 0 0 20px #ff007c;
-    }
-    img{
-        border-radius: 50%;
-        border:4px solid white;
-        width:300px;
-        height:300px;
-        object-fit:cover;
-        box-shadow: 0 0 30px #38bdf8;
-    }
-    a{
-        text-decoration:none;
-    }
-    @keyframes leftPightMove{
-        0%{transform: translateX(20px);}
-        100%{transform: translateX(-20px);}
-    }
-    a h1{
-        animation: leftPightMove 1.5s ease-in-out infinite alternate;
-        color:#00ff00;
-        text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
-    }
-    .fake-alert{
-        background-color:green;
-        color:white;
-        position:fixed;
-        left:50%; 
-        top:50%;
-        border:2px solid white;
-        box-shadow: 0 0 25px #f7f8f7;
-        padding:10px 20px;
-        font-weight:bold;
-        border-radius:5px;
-        transform: scale(0.1);
-        opacity:0;
-        transition: all 0.5s;
-
-    }
-</style>
-<h1>李甫西大夫的个人主页</h1>
-<h2>100万粉丝啦!!！😜</h2>
-<img src="https://s41.ax1x.com/2026/10/17/pnwwEEd.png" onclick="hackerAttack()">
-<a href="https://www.bilibili.com/video/BV1GJ411x7h7/" >
-   <h1>
-        💥点击传送：有惊喜💥
-    </h1>
-</a>
-
-<script>
-    function hackerAttack(){
-        var n = 100;
-        for(var i=1;i<=n;i++){
-           //alert("你个二狗子，拿酒来！我是李甫西大夫，我要喝朗姆！关不掉吧？这是李甫西"+i+"号的警告！");
-            
-            setTimeout(() => {
-                let box = document.createElement("div");
-                box.innerText = "我是李甫西大夫，我要喝朗姆😈😈😈";
-                document.body.appendChild(box);
-                box.className="fake-alert";
-
-                box.offsetHeight;
-
-                box.style.left = (Math.random() * 100) + "%";
-                box.style.top = (Math.random() * 100) + "%";
-                box.style.opacity = "1";
-                box.style.transform = `scale(${Math.random() + 0.5}) rotate(${Math.random() * 60 - 30}deg)`;
-            },i*20);
-           
-            
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>李甫西大夫的个人主页</title>
+    <style>
+        body {
+            /* 删除了 background-color，让底层的代码雨透出来 */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            font-family: sans-serif;
+            overflow-x: hidden;
+            /* 保证内容在代码雨上方 */
+            position: relative;
+            z-index: 1; 
         }
-    }
+        h1 {
+            color: #38bdf8;
+            text-shadow: 0 0 20px #38bdf8;
+        }
+        h2 {
+            color: #ff007c;
+            text-shadow: 0 0 20px #ff007c;
+        }
+        img {
+            border-radius: 50%;
+            border: 4px solid white;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: 0 0 30px #38bdf8;
+            cursor: pointer; /* 鼠标放上去变小手，提示可以点 */
+        }
+        a {
+            text-decoration: none;
+        }
+        @keyframes leftPightMove {
+            0% { transform: translateX(20px); }
+            100% { transform: translateX(-20px); }
+        }
+        a h1 {
+            animation: leftPightMove 1.5s ease-in-out infinite alternate;
+            color: #00ff00;
+            text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+        }
+        .fake-alert {
+            background-color: green;
+            color: white;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 25px #f7f8f7;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            transform: scale(0.1);
+            opacity: 0;
+            transition: all 0.5s;
+            z-index: 9999; /* 确保弹窗在最顶层 */
+        }
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+        }
+        #typewriter {
+            color: #ffd700;
+            font-size: 32px;
+            font-weight: bold;
+            min-height: 50px;
+            text-shadow: 0 0 15px #ffd700;
+            letter-spacing: 2px;
+        }
+        #typewriter::after {
+            content: '|';
+            color: #ffd700;
+            font-weight: bold;
+            animation: blink 0.7s infinite;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
     
-</script>
+    <h1>李甫西大夫的个人主页</h1>
+    <h2>100万粉丝啦!!！😜</h2>
+    <div id="typewriter"></div>
+    
+    <!-- ⚠️ 注意：把你图床拿到的直链，替换掉下面 src 里的网址 -->
+    <img src="https://你的图床链接.png" onclick="hackerAttack()" alt="头像">
+    
+    <a href="https://www.bilibili.com/video/BV1GJ411x7h7/">
+       <h1>💥点击传送：有惊喜💥</h1>
+    </a>
+
+    <script>
+        function hackerAttack() {
+            var n = 100;
+            for (var i = 1; i <= n; i++) {
+                setTimeout(() => {
+                    let box = document.createElement("div");
+                    box.innerText = "我是李甫西大夫，我要喝朗姆😈😈😈";
+                    document.body.appendChild(box);
+                    box.className = "fake-alert";
+
+                    box.offsetHeight;
+
+                    box.style.left = (Math.random() * 100) + "%";
+                    box.style.top = (Math.random() * 100) + "%";
+                    box.style.opacity = "1";
+                    box.style.transform = `scale(${Math.random() + 0.5}) rotate(${Math.random() * 60 - 30}deg)`;
+                }, i * 20);
+            }
+        }
+
+        (function matrixRain() {
+            const canvas = document.getElementById('matrixCanvas');
+            const ctx = canvas.getContext('2d');
+
+            let width, height;
+            let columns;
+            let fontSize = 16;
+            let drops = [];
+
+            const chars = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789@#$%&*';
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                columns = Math.floor(width / fontSize);
+                drops = Array(columns).fill(1);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            function draw() {
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.15)';
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+
+                    if (Math.random() > 0.975) {
+                        ctx.fillStyle = '#fff';
+                    } else {
+                        ctx.fillStyle = '#0f0';
+                    }
+
+                    ctx.fillText(text, x, y);
+
+                    if (y > height && Math.random() > 0.98) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+                // 使用 requestAnimationFrame 替代 setInterval，防止 GitHub Pages 拦截
+                requestAnimationFrame(draw);
+            }
+            
+            // 启动动画
+            draw();
+        })();
+
+        (function typewriter() {
+            const sentences = ['ура😡😡😡', '重返金银岛😍', '关注景行喵🙀'];
+            const el = document.getElementById('typewriter');
+            let sentenceIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const chars = Array.from(sentences[sentenceIndex]);
+
+                if (isDeleting) {
+                    charIndex--;
+                    el.textContent = chars.slice(0, charIndex).join('');
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        sentenceIndex = (sentenceIndex + 1) % sentences.length;
+                        setTimeout(type, 300);
+                        return;
+                    }
+                    setTimeout(type, 60);
+                } else {
+                    charIndex++;
+                    el.textContent = chars.slice(0, charIndex).join('');
+
+                    if (charIndex === chars.length) {
+                        isDeleting = true;
+                        setTimeout(type, 1000);
+                        return;
+                    }
+                    setTimeout(type, 150);
+                }
+            }
+
+            type();
+        })();
+    </script>
+</body>
+</html>
